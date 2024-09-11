@@ -14,8 +14,10 @@ function App() {
         <h1>Chordzzle</h1>
       </nav>
       <AppContext.Provider value={{ board, setBoard }}>
-        <Board />
-        <Piano />
+        <div className='game'>
+          <Board />
+          <Piano />
+        </div>
       </AppContext.Provider>
     </div>
   );
