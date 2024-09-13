@@ -1,6 +1,6 @@
 # Chordzzle
 
-A [Wordle](https://www.nytimes.com/games/wordle/index.html) spinoff for guessing chords. This is a fun way to discover new chords, or new voicings for chords you already knew about!
+A [Wordle](https://www.nytimes.com/games/wordle/index.html) spinoff for guessing chords. This is a fun way to discover new chords or new voicings for chords you already knew about!
 
 ## How To Play
 
