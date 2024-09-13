@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import App, { AppContext } from '../App';
 
 function Key({ keyVal }) {
     const noteIsFlat = (note) => {
         return note.length > 2;
+    }
+
+    const { board, setBoard, currAttempt, setCurrAttempt, addKey } = useContext(AppContext);
+    const selectKey = () => {
+        if (currAttempt.notePos > 4 || currAttempt.attempt > 5) return;
+        addKey(keyVal);
     }
 
     let keyClassName = 'key';
@@ -12,21 +19,13 @@ function Key({ keyVal }) {
     }
 
     let key;
-    if (noteIsFlat(keyVal)) {
-        key = (
-            <div className={keyClassName}>
-                {keyVal.slice(0, -1)}
-            </div>
-        );
-    } else {
-        key = (
-            <div className={keyClassName}>
-                <div className='key-text'>
-                    {keyVal.slice(0, -1)}
-                </div>
-            </div>
-        );
-    }
+
+    key = (
+        <div className={keyClassName} onClick={selectKey}>
+            {keyVal.slice(0, -1)}
+        </div>
+    );
+
 
     return key;
 }
