@@ -19,6 +19,13 @@ function App() {
   const correctChord = ["C", "A#", "D", "E", "A"];
 
   const addKey = (key) => {
+      const audioKey = key.replace('#', 'sharp');
+      const noteAudio = document.getElementById(audioKey);
+      if (noteAudio) {
+          noteAudio.currentTime = 0.25;
+          noteAudio.play();
+      }
+      
       if (selectedKeys.length === 5) return;
       const updatedKeys = [...selectedKeys, key];
       

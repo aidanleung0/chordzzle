@@ -41,12 +41,21 @@ function Controls() {
         setSelectedKeys([])
     }
 
+    const referenceTone = () => {
+        const audioKey = "C4"
+        const noteAudio = document.getElementById(audioKey);
+        if (noteAudio) {
+            noteAudio.currentTime = 0.25;
+            noteAudio.play();
+        }
+    }
+
     let deleteKeyButton = (
         <div className='deleteKey' onClick={deleteKey}>delKey</div>
     );
 
     let refCButton = (
-        <div className='refC'>refC</div>
+        <div className='refC' onClick={referenceTone}>refC</div>
     );
 
     let playChordButton = (

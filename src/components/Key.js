@@ -6,7 +6,7 @@ function Key({ keyVal }) {
         return note.length > 2;
     }
 
-    const { board, setBoard, currAttempt, setCurrAttempt, addKey } = useContext(AppContext);
+    const { board, setBoard, currAttempt, setCurrAttempt, addKey, selectedKeys } = useContext(AppContext);
     const selectKey = () => {
         if (currAttempt.notePos > 4 || currAttempt.attempt > 5) return;
         addKey(keyVal);
