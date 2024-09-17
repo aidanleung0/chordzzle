@@ -12,7 +12,8 @@ function Piano() {
             <audio
                 id={fileName}
                 key={index}
-                src={`/cropped_audio/${fileName}.mp3`}
+                preload='auto'
+                src={`/piano_mp3/${fileName}.mp3`}
             >
             </audio>);
     });

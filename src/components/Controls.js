@@ -3,7 +3,7 @@ import App, { AppContext } from '../App';
 
 function Controls() {
 
-    const { board, setBoard, currAttempt, setCurrAttempt, selectedKeys, setSelectedKeys } = useContext(AppContext);
+    const { board, setBoard, currAttempt, setCurrAttempt, selectedKeys, setSelectedKeys, correctChord } = useContext(AppContext);
 
     const handleKeyboard = useCallback((event) => {
         if (event.key === "Enter") {
@@ -45,33 +45,54 @@ function Controls() {
         const audioKey = "C4"
         const noteAudio = document.getElementById(audioKey);
         if (noteAudio) {
-            noteAudio.currentTime = 0.25;
+            noteAudio.currentTime = 0.0;
             noteAudio.play();
         }
     }
 
+    const playChord = () => {
+        const noteFiles = correctChord.map(note => note.replace('#', 'sharp'));
+
+        noteFiles.forEach(noteFile => {
+            const noteAudio = document.getElementById(noteFile);
+            if (noteAudio) {
+                noteAudio.currentTime = 0.0;
+                noteAudio.play();
+            }
+        })
+    }
+
     let deleteKeyButton = (
-        <div className='deleteKey' onClick={deleteKey}>delKey</div>
+        <div className='deleteKey' onClick={deleteKey}>
+            delKey
+        </div>
     );
 
     let refCButton = (
-        <div className='refC' onClick={referenceTone}>refC</div>
+        <div className='refC' onClick={referenceTone}>
+            refC
+        </div>
     );
 
     let playChordButton = (
-        <div className='playChord'>playChord</div>
+        <div className='playChord' onClick={playChord}>
+            playChord
+        </div>
     );
 
     let submitGuessButton = (
-        <div className='submitGuess' onClick={submitGuess}>submitGuess</div>
+        <div className='submitGuess' onClick={submitGuess}>
+            <img src='/assets/enter_512.png'></img>
+            <h2>Enter</h2>
+        </div>
     );
 
     return (
         <div className='controls' onKeyDown={handleKeyboard}>
-            {deleteKeyButton}
+            {submitGuessButton}
             {refCButton}
             {playChordButton}
-            {submitGuessButton}
+            {deleteKeyButton}
         </div>
     )
 }

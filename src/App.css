@@ -50,12 +50,11 @@ nav h1 {
   flex: 33%;
   display: flex;
   flex-direction: row;
-  margin: 5px;
 }
 
 .note {
-  flex: 33%;
-  height: 100%;
+  flex: 60px;
+  height: 60px;
   border: 1px solid grey;
   margin: 5px;
   display: grid;
@@ -64,6 +63,7 @@ nav h1 {
   font-weight: bolder;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
 }
 
 #correct {
@@ -83,25 +83,56 @@ nav h1 {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  width: 70%;
-  margin-bottom: 20px;
-  border: 2px solid white;
+  width: 50%;
+  height: 10%;
+  margin-bottom: 10px;
 }
 
 .deleteKey {
   cursor: pointer;
+  display: flex;
+  border: 1px solid grey;
+  height: 75%;
+  width: 20%;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 .refC {
   cursor: pointer;
+  display: flex;
+  border: 1px solid grey;
+  height: 75%;
+  width: 20%;
+  justify-content: center;
+  align-items: center;
 }
 
 .playChord {
   cursor: pointer;
+  display: flex;
+  border: 1px solid grey;
+  height: 75%;
+  width: 20%;
+  justify-content: center;
+  align-items: center;
 }
 
 .submitGuess {
   cursor: pointer;
+  display: flex;
+  border: 1px solid grey;
+  height: 75%;
+  width: 20%;
+  justify-content: center;
+  align-items: center;
+}
+
+.submitGuess img {
+  
+  height: 80%;
+  
 }
 
 .piano {
