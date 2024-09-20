@@ -64,26 +64,28 @@ function Controls() {
 
     let deleteKeyButton = (
         <div className='deleteKey' onClick={deleteKey}>
-            delKey
+            <p>delete</p>
+            <img src='/assets/delete_512.png'></img>
+            
         </div>
     );
 
     let refCButton = (
         <div className='refC' onClick={referenceTone}>
-            refC
+            <img src='/assets/note_512.png'></img>
         </div>
     );
 
     let playChordButton = (
         <div className='playChord' onClick={playChord}>
-            playChord
+            <img src='/assets/play_512.png'></img>
         </div>
     );
 
     let submitGuessButton = (
         <div className='submitGuess' onClick={submitGuess}>
             <img src='/assets/enter_512.png'></img>
-            <h2>Enter</h2>
+            <p>enter</p>
         </div>
     );
 

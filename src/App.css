@@ -1,10 +1,14 @@
 .App {
   text-align: center;
-  background-color: #121212;
-  width: 100vw;
-  height: 100vh;
+  background-color: #151515;
+  width: 100%;
+  height: 200vh;
   /* display: flex; */
   color: white;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -38,11 +42,11 @@ nav h1 {
 
 .board {
   max-width: 350px;
-  width: calc(100%);
+  width: 100%;
   height: 400px;
   display: grid;
   flex-direction: column;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   padding: 10px;
 }
 
@@ -54,9 +58,10 @@ nav h1 {
 
 .note {
   flex: 60px;
-  height: 60px;
-  border: 1px solid grey;
-  margin: 5px;
+  height: 64px;
+  border: 2px solid grey;
+  border-radius: 5%;
+  margin: 3px;
   display: grid;
   place-items: center;
   font-size: 30px;
@@ -86,53 +91,86 @@ nav h1 {
   width: 50%;
   height: 10%;
   margin-bottom: 10px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .deleteKey {
   cursor: pointer;
   display: flex;
-  border: 1px solid grey;
+  border: 3px solid grey;
+  border-radius: 10%;
   height: 75%;
-  width: 20%;
+  width: 15%;
   justify-content: center;
   align-items: center;
+  position: relative;
+  box-sizing: border-box;
   
+}
+
+.deleteKey img {
+  width: auto;
+  height: 2.5rem;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  margin-left: 5%;
 }
 
 .refC {
   cursor: pointer;
   display: flex;
-  border: 1px solid grey;
+  border: 4px solid grey;
+  border-radius: 15%;
   height: 75%;
-  width: 20%;
+  width: 6%;
   justify-content: center;
   align-items: center;
+}
+
+.refC img {
+  width: auto;
+  height: 2rem;
+  aspect-ratio: 1/1;
+  object-fit: contain;
 }
 
 .playChord {
   cursor: pointer;
   display: flex;
-  border: 1px solid grey;
+  border: 4px solid grey;
+  border-radius: 15%;
   height: 75%;
-  width: 20%;
+  width: 6%;
   justify-content: center;
   align-items: center;
+}
+
+.playChord img {
+  width: auto;
+  height: 2rem;
+  aspect-ratio: 1/1;
+  object-fit: contain;
 }
 
 .submitGuess {
   cursor: pointer;
   display: flex;
-  border: 1px solid grey;
+  border: 3px solid grey;
+  border-radius: 10%;
   height: 75%;
-  width: 20%;
+  width: 13%;
   justify-content: center;
   align-items: center;
+  position: relative;
+  box-sizing: border-box;
 }
 
 .submitGuess img {
-  
-  height: 80%;
-  
+  width: auto;
+  height: 1.7rem;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  margin-right: 10%;
 }
 
 .piano {
