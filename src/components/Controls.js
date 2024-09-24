@@ -64,9 +64,7 @@ function Controls() {
 
     let deleteKeyButton = (
         <div className='deleteKey' onClick={deleteKey}>
-            <p>delete</p>
             <img src='/assets/delete_512.png'></img>
-            
         </div>
     );
 
@@ -85,15 +83,14 @@ function Controls() {
     let submitGuessButton = (
         <div className='submitGuess' onClick={submitGuess}>
             <img src='/assets/enter_512.png'></img>
-            <p>enter</p>
         </div>
     );
 
     return (
         <div className='controls' onKeyDown={handleKeyboard}>
-            {submitGuessButton}
             {refCButton}
             {playChordButton}
+            {submitGuessButton}
             {deleteKeyButton}
         </div>
     )

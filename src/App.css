@@ -1,10 +1,10 @@
 .App {
   text-align: center;
   background-color: #151515;
-  width: 100%;
-  height: 200vh;
+  width: 100vw;
+  height: 100vh;
   /* display: flex; */
-  color: white;
+  color:#151515;
 }
 
 html {
@@ -21,16 +21,218 @@ nav {
   width: 100%;
   margin: 0;
   border-bottom: 1px solid grey;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 nav h1 {
+  flex-grow: 1;
   margin: 0;
   font-family: Helvetica, Arial, sans-serif;
   color: white;
   font-size: 45px;
 }
+
+.info-container {
+  position: absolute;
+  left: 10px;
+  cursor: pointer;
+  border: 2px solid grey;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  aspect-ratio: 1 / 1 ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: border 0.3s ease-in-out;
+}
+
+.info-container img {
+  width: 65%;
+  height: 65%;
+  background-color: grey;
+  object-fit: cover;
+  overflow: clip;
+  transition: all 0.3s ease-in-out;
+}
+
+.info-container:hover {
+  border: 2px solid rgb(155, 89, 182);
+}
+
+.info-container:hover img {
+  background-color: rgb(155, 89, 182);
+}
+
+.stats-container {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  border: 2px solid grey;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  aspect-ratio: 1 / 1 ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: border 0.3s ease-in-out;
+}
+
+.stats-container img {
+  width: 60%;
+  height: 60%;
+  background-color: grey;
+  object-fit: cover;
+  overflow: clip;
+  transition: all 0.3s ease-in-out;
+}
+
+.stats-container:hover {
+  border: 2px solid rgb(245, 228, 77);
+}
+
+.stats-container:hover img {
+  background-color: rgb(245, 228, 77);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #111; /* Dark background */
+  color: white;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 10px;
+  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+.modal-content::after, .modal-content::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(#b59f3b, #538d4e, #808080, #b59f3b);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 3px;
+  border-radius: 10px;
+}
+
+.modal-content::before {
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 30px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Header and text styles */
+.modal-content h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.modal-content p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.modal-content ul {
+  margin-left: 10px;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1
+}
+
+.modal-content h3 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Examples section */
+.examples {
+  margin-top: 1.5rem;
+}
+
+.example {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.example-tile {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  border-radius: 5px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #666;
+  margin: 20px 0;
+}
+
+.example-tile {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Colors for example tiles */
+.green {
+  background-color: #538d4e;
+}
+
+.yellow {
+  background-color: #b59f3b;
+}
+
+.grey {
+  background-color: #3a3a3c;
+}
+
 .game {
   width: 100%;
   margin: 0 auto;
@@ -38,6 +240,7 @@ nav h1 {
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: 10px;
 }
 
 .board {
@@ -88,121 +291,119 @@ nav h1 {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  width: 50%;
-  height: 10%;
-  margin-bottom: 10px;
+  width: 60%;
+  max-width: 600px;
+  height: auto;
+  margin-bottom: 15px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.deleteKey {
+.submitGuess, .refC, .playChord, .deleteKey {
   cursor: pointer;
   display: flex;
-  border: 3px solid grey;
-  border-radius: 10%;
-  height: 75%;
-  width: 15%;
   justify-content: center;
   align-items: center;
   position: relative;
   box-sizing: border-box;
-  
+  width: 4vw;
+  aspect-ratio: 1 / 1;
+  border-radius: 10%; 
+  border: 2px solid grey;
+  transition: border 0.3s ease-in-out;
 }
 
-.deleteKey img {
-  width: auto;
-  height: 2.5rem;
-  aspect-ratio: 1/1;
+.submitGuess img, .refC img, .playChord img, .deleteKey img {
+  width: 75%;
+  height: auto;
   object-fit: contain;
-  margin-left: 5%;
+  background-color: grey;
+  transition: all 0.3s ease-in-out;
 }
 
-.refC {
-  cursor: pointer;
-  display: flex;
-  border: 4px solid grey;
-  border-radius: 15%;
-  height: 75%;
-  width: 6%;
-  justify-content: center;
-  align-items: center;
+.submitGuess:hover {
+  border: 2px solid rgb(115, 201, 115);
 }
 
-.refC img {
-  width: auto;
-  height: 2rem;
-  aspect-ratio: 1/1;
-  object-fit: contain;
+.submitGuess:hover img {
+  background-color: rgb(115, 201, 115);
 }
 
-.playChord {
-  cursor: pointer;
-  display: flex;
-  border: 4px solid grey;
-  border-radius: 15%;
-  height: 75%;
-  width: 6%;
-  justify-content: center;
-  align-items: center;
+.refC:hover {
+  border: 2px solid rgb(92, 147, 255);
 }
 
-.playChord img {
-  width: auto;
-  height: 2rem;
-  aspect-ratio: 1/1;
-  object-fit: contain;
+.refC:hover img {
+  background-color: rgb(92, 147, 255);
 }
 
-.submitGuess {
-  cursor: pointer;
-  display: flex;
-  border: 3px solid grey;
-  border-radius: 10%;
-  height: 75%;
-  width: 13%;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  box-sizing: border-box;
+.playChord:hover {
+  border: 2px solid rgb(255, 187, 85);
 }
 
-.submitGuess img {
-  width: auto;
-  height: 1.7rem;
-  aspect-ratio: 1/1;
-  object-fit: contain;
-  margin-right: 10%;
+.playChord:hover img {
+  background-color: rgb(255, 187, 85);
+}
+
+.deleteKey:hover {
+  border: 2px solid rgb(255, 97, 97);
+}
+
+.deleteKey:hover img {
+  background-color: rgb(255, 97, 97);
 }
 
 .piano {
   display: flex;
-  flex-direction: row;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px;
+  margin: 0 auto;
+  width: 60%;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  justify-content: center;
 }
 
 .key {
-  width: 40px;
-  height: 200px;
+  width: 35px;
+  height: 150px;
   border: 2px solid black;
+  margin-right: 1px;
+  margin-left: 1px;
+  
+
   display: flex;
-  align-self: end;
+  align-items: center;
+  justify-content: flex-end;
   font-size: 20px;
   background-color: white;
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
   color: black;
-  justify-content: flex-end;
   flex-direction: column;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.key:hover {
+  background-color: rgb(83, 169, 254);
 }
 
 .key.flat {
   position: relative;
   background-color: black;
   color: white;
-  margin-left: -17px;
-  margin-right: -17px;
-  height: 130px;
-  width: 30px;
-  z-index: 2;
-  font-size: 16px;
+  margin-left: -14px;
+  margin-right: -14px;
+  height: 100px;
+  width: 25px;
+  z-index: 0;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.key.flat:hover {
+  background-color: rgb(42, 87, 131)
 }
 
 #disabled {
