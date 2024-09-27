@@ -104,7 +104,7 @@ nav h1 {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -112,8 +112,8 @@ nav h1 {
 }
 
 /* Modal content */
-.modal-content {
-  background-color: #111; /* Dark background */
+.rules-content, .stats-content {
+  background-color: #111;
   color: white;
   padding: 20px;
   width: 90%;
@@ -123,7 +123,7 @@ nav h1 {
   font-family: Arial, sans-serif;
 }
 
-.modal-content::after, .modal-content::before {
+.rules-content::after, .rules-content::before {
   content: '';
   position: absolute;
   height: 100%;
@@ -137,7 +137,21 @@ nav h1 {
   border-radius: 10px;
 }
 
-.modal-content::before {
+.stats-content::after, .stats-content::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(#3bb599, #d25435, #808080, #3bb599);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 3px;
+  border-radius: 10px;
+}
+
+.rules-content::before, .stats-content::before {
   filter: blur(1.5rem);
   opacity: 0.5;
 }
@@ -155,24 +169,24 @@ nav h1 {
 }
 
 /* Header and text styles */
-.modal-content h2 {
+.rules-content h2, .stats-content h2 {
   font-size: 2rem;
   font-weight: bold;
 }
 
-.modal-content p {
+.rules-content p {
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
 
-.modal-content ul {
+.rules-content ul {
   margin-left: 10px;
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 1
 }
 
-.modal-content h3 {
+.rules-content h3 {
   font-size: 1.5rem;
   margin-top: 2rem;
 }
@@ -232,6 +246,79 @@ hr {
 .grey {
   background-color: #3a3a3c;
 }
+
+.stats-header {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.stats-header div {
+  text-align: center;
+}
+
+.stats-header p {
+  margin: 5px 0 0;
+}
+
+.histogram-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.histogram-bar span {
+  width: 20px;
+  text-align: center;
+}
+
+.bar {
+  flex-grow: 1;
+  height: 20px;
+  background-color: transparent;
+
+  margin: 0 10px;
+  position: relative;
+}
+
+.inner-bar {
+  background-color: #888;
+  height: 100%;
+  width: 0%;
+}
+
+.share-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.share-button {
+  background-color: #538d4e; /* Green background */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px; /* Rounded edges */
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.share-button:hover {
+  background-color: #4a7b45; /* Darker green on hover */
+}
+
+.share-button img {
+  margin-left: 10px;
+  width: 16px;
+  height: 16px;
+}
+
+/* ACTUAL GAME */
 
 .game {
   width: 100%;
