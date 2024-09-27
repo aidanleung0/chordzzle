@@ -58,7 +58,7 @@ function App() {
 
         const newBoard = [...board];
         updatedKeys.forEach((selectedKey, index) => {
-            newBoard[currAttempt.attempt][index] = selectedKey;
+            newBoard[currAttempt.attempt][index] = {note: selectedKey.slice(0, -1), state: ''};
         });
 
         setBoard(newBoard);

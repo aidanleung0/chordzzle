@@ -25,7 +25,7 @@ function Controls() {
         if (currAttempt.notePos === 0) return;
 
         const newBoard = [...board];
-        newBoard[currAttempt.attempt][currAttempt.notePos -1] = "";
+        newBoard[currAttempt.attempt][currAttempt.notePos -1] = { note: "", state: "" };
         setBoard(newBoard)
 
         const newSelectedKeys = [...selectedKeys];
@@ -65,19 +65,31 @@ function Controls() {
 
         const newBoard = [...board];
 
+        const tempCorrectChord = [...correctChordOctaveless];
+
         guessChord.forEach((note, index) => {
             if (note === correctChordOctaveless[index]) {
-                newBoard[currAttempt.attempt][index] = { note: selectedKeys[index], state: 'correct' };
-            } else if (correctChordOctaveless.includes(note)) {
-                newBoard[currAttempt.attempt][index] = { note: selectedKeys[index], state: 'almost' };
-            } else {
-                newBoard[currAttempt.attempt][index] = { note: selectedKeys[index], state: 'error' };
+                newBoard[currAttempt.attempt][index] = { note: selectedKeys[index].slice(0, -1), state: 'correct' };
+                tempCorrectChord[index] = null; 
             }
         });
 
+        guessChord.forEach((note, index) => {
+            if (!newBoard[currAttempt.attempt][index].state && tempCorrectChord.includes(note)) {
+                const correctIndex = tempCorrectChord.indexOf(note);
+                newBoard[currAttempt.attempt][index] = { note: selectedKeys[index].slice(0, -1), state: 'almost' };
+                tempCorrectChord[correctIndex] = null;
+            } else if (!newBoard[currAttempt.attempt][index].state) {
+                newBoard[currAttempt.attempt][index] = { note: selectedKeys[index].slice(0, -1), state: 'error' };
+            }
+        });
+
+        setBoard(newBoard);
+
         const isCorrect = selectedKeys.every((note, index) => note.slice(0, -1) === correctChordOctaveless[index]);
-        setCurrAttempt({ attempt: currAttempt.attempt + 1, notePos: 0});
+        setCurrAttempt({ attempt: currAttempt.attempt + 1, notePos: 0 });
         setSelectedKeys([]);
+        
         if (isCorrect) {
             setIsWin(true);
             checkGameOver(true);
