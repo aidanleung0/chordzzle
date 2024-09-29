@@ -1,36 +1,31 @@
 from django.db import models
-import csv
 import random
 from django.core.cache import cache
 from datetime import datetime, timedelta
 
-CSV_FILE_PATH = r'C:/Users/aidan/chordzzle/backend/transposed-chords.csv'
+
+class Chord(models.Model):
+    chord = models.CharField(max_length=100)
+    notes = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.chord
+    
 
 class ChordManager:
-    def __init__(self, csv_file=CSV_FILE_PATH):
-        self.csv_file = csv_file
-        self.chords = self.load_chords()
-
-    def load_chords(self):
-        chords = []
-        with open(self.csv_file, 'r') as file:
-            reader = csv.reader(file)
-            next(reader)
-            for row in reader:
-                chords.append({
-                    'name': row[0],
-                    'notes': row[1]
-                })
-        return chords
-
     def get_daily_chord(self):
         today = datetime.now().date()
-        cached_chord = cache.get('daily_chord')
 
+        cached_chord = cache.get('daily_chord')
         if cached_chord and cached_chord['date'] == today:
             return cached_chord['chord']
 
-        random_chord = random.choice(self.chords)
-        cache.set('daily_chord', {'date': today, 'chord': random_chord}, timeout=86400)  # Cache for 24 hours
+        chords = list(Chord.objects.all())
 
-        return random_chord
+        # Choose a random chord
+        if chords:
+            random_chord = random.choice(chords)
+            cache.set('daily_chord', {'date': today, 'chord': {'chord_name': random_chord.chord, 'notes': random_chord.notes}}, timeout=86400)
+            return {'chord_name': random_chord.chord, 'notes': random_chord.notes}
+        else:
+            return {'error': 'No chords available in the database'}

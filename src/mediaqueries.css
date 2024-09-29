@@ -1,4 +1,9 @@
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1000px) {
+
+    .controls {
+        height: 50px;
+    }
+
     .piano {
         justify-content: flex-start;
         /* overflow-x: scroll; */

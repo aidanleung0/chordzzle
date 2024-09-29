@@ -95,7 +95,7 @@ function App() {
 
         const fetchDailyChord = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/daily-chord/');
+                const response = await fetch('https://chordzzle.uw.r.appspot.com/api/daily-chord/');
                 const data = await response.json();
                 setDailyChord(data);
                 setCorrectChord(data.notes.split(' '));
